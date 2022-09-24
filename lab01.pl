@@ -181,3 +181,9 @@ uncle(X) :- setof(Y, uncle(Y, X), Set), write(Set).
 
 male_cousin(X,Y) :- parent(Z, X), parent(W, Z), parent(W, Y), male(X), Z \= Y.
 male_cousin(X) :- setof(Y, male_cousin(Y, X), Set), write(Set).
+
+% Task 14
+% Вывести всех двоюродных братьев и сестер
+
+sibling_2(X, Y) :- parent(W, Z), parent(Z, X), parent(W, U), parent(U, Y), Z \= U.
+sibling_2(X) :- sibling_2(Y, X), write(Y).
